@@ -4,12 +4,12 @@
   "description": "Movie and Series manager api",
   "main": "index.js",
   "scripts": {
+    "start": "node src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Bruno Feldmann Prusch",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3"
+    "restify": "6.3.4"
   }
 }
