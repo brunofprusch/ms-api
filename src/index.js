@@ -1,17 +1,9 @@
-const restify = require('restify');
+const express = require('express'),
+app = express();
+movieResource = require('./resource/movie');
 
-const server = restify.createServer({
-    name: 'ms-api',
-    version: '1.0.0'
-});
+app.use('/', movieResource)
 
-server.get('/hello', (req, resp, next) => {
-    resp.json({message: 'Hello'});
-    console.log('Excuting /hello route!');
-    return next();
-});
+app.listen(3000);
 
-
-server.listen(3000, () => {
-    console.log('ms-api started on 3000');
-})
+module.exports = app;
