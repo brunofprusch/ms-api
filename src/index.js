@@ -1,7 +1,7 @@
 const app = require('./app'),
       mongoose = require('mongoose');
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 console.log('Application started');
 
 // mongoose.connect('mongodb://localhost:27017/ms-manager', { useNewUrlParser: true })
