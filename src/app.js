@@ -8,7 +8,7 @@ app.use('/', router);
 app.get('/health', (req, res) => {
     res.json({ 
         app: 'MS-API',
-        status: 'Running'
+        status: 'Running on port ' + process.env.PORT
     })
 })
 
