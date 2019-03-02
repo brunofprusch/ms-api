@@ -1,17 +1,17 @@
 const app = require('./app'),
-      mongoose = require('mongoose');
+      mongoose = require('mongoose'),
+      environment = require('./environment');
 
-app.listen(process.env.PORT || 3000);
-console.log('Application started');
+// app.listen(environment.PORT);
+// console.log('Application started');
 
-// mongoose.connect('mongodb://localhost:27017/ms-manager', { useNewUrlParser: true })
-//     .then(() => {
-//         app.listen(3000);
-//         console.log('Application started')
-//     })
-//     .catch((error) => {
-//         console.log('Error starting application', error);
-//     })
-
+mongoose.connect(environment.MONGO, { useNewUrlParser: true })
+    .then(() => {
+        app.listen(environment.PORT);
+        console.log('Application started')
+    })
+    .catch((error) => {
+        console.log('Error starting application', error);
+    })
 
 module.exports = app;
