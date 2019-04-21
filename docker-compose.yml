@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  ms-api:
+    build: .
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/ms-api
+    links:
+      - mongo
+    healthcheck:
+      test: [ "CMD-SHELL", "wget http://localhost:3000/health -O /dev/null || exit 1" ]
+      interval: 1s
+      retries: 10
+      timeout: 5s
+    depends_on:
+      - mongo
+    hostname: ms-api
+    ports:
+      - "3000:3000"
+  mongo:
+    image: "healthcheck/mongo"
+    logging:
+      driver: none
+    hostname: mongo
+    healthcheck:
+      interval: 1s
+      retries: 10
